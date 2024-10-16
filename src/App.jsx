@@ -1,7 +1,25 @@
-import "./App.css";
+import Login from "./Components/Login";
+import Browse from "./Components/Browse";
+import { createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
-  return <h1 className="font-bold">Let's build sjdnowqndoi</h1>;
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Login />,
+    },
+    {
+      path: "/browse",
+      element: <Browse />,
+    },
+  ]);
+
+  return (
+    <div>
+      <RouterProvider router={appRouter} />
+    </div>
+  );
 }
 
 export default App;
