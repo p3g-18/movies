@@ -2,11 +2,17 @@ import { React } from "react";
 import Header from "./Header";
 import { useRef, useState } from "react";
 import { Validation } from "../utils/Validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/Firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const navigate = useNavigate();
   const email = useRef(null);
   const password = useRef(null);
   const confirmPassword = useRef(null);
@@ -24,6 +30,45 @@ const Login = () => {
       return;
     }
     setErrorMessage(message);
+
+    if (!isSignIn) {
+      //firebase auth
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Sign up auth
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " " + errorMessage);
+        });
+    } else {
+      //Sign In auth
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = "User not registered! Please register first";
+          setErrorMessage(errorMessage);
+        });
+    }
   };
 
   return (
@@ -47,6 +92,14 @@ const Login = () => {
             <h1 className="text-3xl text-red-700 font-bold sm:text-white sm:text-4xl p-4">
               {isSignIn ? "Sign In" : "Sign Up"}
             </h1>
+
+            {!isSignIn && (
+              <input
+                type="name"
+                placeholder="Enter your Name"
+                className="m-2 p-2 w-full bg-slate-500 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+              />
+            )}
 
             <input
               ref={email}
