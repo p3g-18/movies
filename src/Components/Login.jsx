@@ -8,15 +8,15 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/Firebase";
-import { useNavigate } from "react-router-dom";
+
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
+import { bgImage } from "../utils/Constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
@@ -56,7 +56,6 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -80,7 +79,6 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -96,7 +94,7 @@ const Login = () => {
 
       <div className=" hidden md:block  absolute inset-0 -z-10 ">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/f272782d-cf96-4988-a675-6db2afd165e0/web/IN-en-20241008-TRIFECTA-perspective_b28b640f-cee0-426b-ac3a-7c000d3b41b7_small.jpg"
+          src={bgImage}
           alt="backgroundImage"
           className="  w-full h-full object-cover "
         />
