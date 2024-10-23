@@ -19,31 +19,38 @@ const Header = () => {
       });
   };
 
-  const toggleDropdown = () => {
-    setShowDropdown((prev) => !prev);
+  const handleMouseEnter = () => {
+    setShowDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowDropdown(false);
   };
 
   return (
     <div className="absolute w-screen z-10 px-4 py-2 bg-gradient-to-b from-black flex justify-between ">
       <img
-        className="w-52 h-24"
+        className="w-40 h-16 sm:w-52 sm:h-24"
         src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
         alt="Logo"
       />
       {user && (
-        <div className="flex p-2 items-center relative mx-10">
-          <img
-            src="https://xsgames.co/randomusers/avatar.php?g=pixel"
-            alt="profile-icon"
-            className="w-12 h-12 cursor-pointer"
-            onMouseOver={toggleDropdown}
-          />
-          <span className="cursor-pointer">🔻</span>
-
+        <div
+          className="flex p-2 items-center relative mx-10"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <p className="text-white">Hello,</p>{" "}
+          <p className="px-2  text-red-900 font-bold cursor-pointer uppercase">
+            {user.displayName}
+          </p>
+          <span className="cursor-pointer transform transition-transform duration-300 hover:rotate-180">
+            🔻
+          </span>
           {showDropdown && (
-            <div className="absolute top-14 right-0 pr-10 my-5 ">
+            <div className="absolute top-14 right-0 pr-10 my-5">
               <button
-                className=" w-full p-2 bg-red-700 rounded-full h-10 text-white ml-10 shadow-2xl "
+                className="w-full p-2 bg-red-700 rounded-full h-10 text-white ml-10 shadow-2xl"
                 onClick={handleSignOut}
               >
                 Signout
