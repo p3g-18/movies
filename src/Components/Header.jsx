@@ -56,7 +56,7 @@ const Header = () => {
           onMouseLeave={handleMouseLeave}
         >
           <p className="text-white">Hello,</p>{" "}
-          <p className="px-2  text-red-900 font-bold cursor-pointer uppercase">
+          <p className="px-2  text-red-800 font-bold cursor-pointer uppercase">
             {user.displayName}
           </p>
           <span className="cursor-pointer transform transition-transform duration-300 hover:rotate-180">
