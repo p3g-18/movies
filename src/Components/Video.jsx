@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-
 import getTrailer from "../Hooks/useTrailer";
 
 const Video = ({ movieId }) => {
