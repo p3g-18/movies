@@ -6,14 +6,16 @@ import { auth } from "../utils/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { NetflixLogo } from "../utils/Constants";
+import { Language, NetflixLogo } from "../utils/Constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
   const dispatch = useDispatch();
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -50,6 +52,9 @@ const Header = () => {
   const handleGpt = () => {
     dispatch(toggleGptSearchView());
   };
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
 
   return (
     <div className="absolute w-screen z-10 px-4 py-2 bg-gradient-to-b from-black flex justify-between ">
@@ -65,7 +70,7 @@ const Header = () => {
             className="bg-red-700 text-white p-2 mr-36 rounded-2xl hover:bg-opacity-50"
             onClick={handleGpt}
           >
-            GPT Search
+            {showGptSearch ? "Home" : "GPTSearch"}
           </button>
           <div
             className="flex items-center"
@@ -80,9 +85,23 @@ const Header = () => {
               🔻
             </span>
             {showDropdown && (
-              <div className="absolute top-10 right-0 pr-10 my-5">
+              <div className="absolute top-[60%] right-0 bg-gray-800 p-4 mt-2 rounded-lg shadow-lg text-white z-10 w-48">
+                {showGptSearch && (
+                  <select
+                    className="w-full bg-gray-700 p-2 rounded my-2"
+                    onChange={handleLanguageChange}
+                  >
+                    {" "}
+                    //language selection
+                    {Language.map((lang) => (
+                      <option key={lang.identifier} value={lang.identifier}>
+                        {lang.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
                 <button
-                  className="w-full p-2 bg-red-700 rounded-full h-10 text-white ml-10 shadow-2xl"
+                  className="w-full bg-red-700 p-2 rounded text-white hover:bg-red-600"
                   onClick={handleSignOut}
                   onMouseEnter={handleMouseEnter}
                 >

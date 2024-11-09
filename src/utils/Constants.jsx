@@ -14,3 +14,17 @@ export const Api_Options = {
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const GPT_BG_Image =
+  "https://t4.ftcdn.net/jpg/02/81/37/31/360_F_281373104_OX6POdDHhyyy33hRfAOqTR11bO9aEN1T.jpg";
+
+export const Language = [
+  {
+    identifier: "en",
+    name: "English",
+  },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+  { identifier: "italian", name: "Italian" },
+  { identifier: "russian", name: "Russian" },
+];

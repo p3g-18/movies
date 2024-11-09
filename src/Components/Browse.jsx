@@ -5,7 +5,7 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import useTopRated from "../Hooks/useTopRated";
 import useUpcoming from "../Hooks/useUpcoming";
-import GPTSearch from "./GPTSearch";
+import GPTSearchPage from "./GPTSearchPage";
 import { useSelector } from "react-redux";
 
 const Browse = () => {
@@ -15,11 +15,13 @@ const Browse = () => {
   useTopRated(); //calling our custom hooks
   useUpcoming(); //calling our custom hooks
 
+  //we will show gptsearch when we click on it or eles browse page
+
   return (
     <div className="font-bold">
       <Header />
       {showGptSearch ? (
-        <GPTSearch />
+        <GPTSearchPage />
       ) : (
         <>
           <MainContainer />
