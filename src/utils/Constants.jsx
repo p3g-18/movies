@@ -29,5 +29,4 @@ export const Language = [
   { identifier: "russian", name: "Russian" },
 ];
 
-export const GPT_KEY =
-  "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";
+export const GPT_KEY = "AIzaSyCeo1HDn2zwLt-vanXURiL1Sw-35Rab2GY";
