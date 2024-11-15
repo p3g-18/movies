@@ -4,14 +4,22 @@ const gptSlice = createSlice({
   name: "gpt",
   initialState: {
     showGptSearch: false,
+    gemResults: null,
+    gemMovies: null,
   },
   reducers: {
-    toggleGptSearchView: (state, action) => {
+    toggleGptSearchView: (state) => {
       state.showGptSearch = !state.showGptSearch;
+    },
+
+    geminiMoviesResult: (state, action) => {
+      const { gemMovies, gemResults } = action.payload;
+      state.gemMovies = gemMovies;
+      state.gemResults = gemResults;
     },
   },
 });
 
-export const { toggleGptSearchView } = gptSlice.actions;
+export const { toggleGptSearchView, geminiMoviesResult } = gptSlice.actions;
 
 export default gptSlice.reducer;

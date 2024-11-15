@@ -1,13 +1,15 @@
 import React, { useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import lang from "../utils/languageConstants";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { GPT_KEY } from "../utils/Constants";
 import { Api_Options } from "../utils/Constants";
+import { geminiMoviesResult } from "../utils/gptSlice";
 
 const GPTSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang);
   console.log("langkey", langKey);
+  const dispatch = useDispatch();
 
   const searchText = useRef(null);
 
@@ -37,7 +39,6 @@ const GPTSearchBar = () => {
       "only give me names of 10 movies,comma separated";
 
     const result = await model.generateContent(prompt);
-    // console.log(result?.response?.candidates?.[0]?.content?.parts[0]?.text);
 
     const GeminiMovies =
       result?.response?.candidates?.[0]?.content?.parts[0]?.text.split(","); //converting the received data into an array
@@ -52,6 +53,10 @@ const GPTSearchBar = () => {
 
     const finalData = await Promise.all(promiseData);
     console.log(finalData);
+
+    dispatch(
+      geminiMoviesResult({ gemMovies: GeminiMovies, gemResults: finalData })
+    );
   };
 
   return (
