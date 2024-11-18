@@ -9,9 +9,11 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { Language, NetflixLogo } from "../utils/Constants";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const user = useSelector((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
   const dispatch = useDispatch();

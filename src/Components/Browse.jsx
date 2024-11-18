@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./Header";
+import Layout from "../Layout";
 import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
@@ -7,9 +7,15 @@ import useTopRated from "../Hooks/useTopRated";
 import useUpcoming from "../Hooks/useUpcoming";
 import GPTSearchPage from "./GPTSearchPage";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const navigate = useNavigate;
+
+  const handleClick = () => {
+    navigate(`/MovieDetails/:id`);
+  };
 
   useNowPlayingMovies(); //calling our custom hooks
   useTopRated(); //calling our custom hooks
@@ -19,13 +25,13 @@ const Browse = () => {
 
   return (
     <div className="font-bold">
-      <Header />
+      <Layout />
       {showGptSearch ? (
         <GPTSearchPage />
       ) : (
         <>
           <MainContainer />
-          <SecondaryContainer />
+          <SecondaryContainer onClick={handleClick} />
         </>
       )}
     </div>

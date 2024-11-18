@@ -40,7 +40,12 @@ const Categories = ({ title, movies }) => {
         >
           {movies.length > 0 ? (
             movies.map((movie) => (
-              <MovieCard key={movie.id} posterPath={movie.poster_path} />
+              <MovieCard
+                key={movie.id}
+                posterPath={movie.poster_path}
+                id={movie.id}
+                backdropPath={movie.backdrop_path}
+              />
             ))
           ) : (
             <p>No movies available</p>

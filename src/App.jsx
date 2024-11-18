@@ -2,7 +2,7 @@ import Login from "./Components/Login";
 import Browse from "./Components/Browse";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import Description from "./Components/Description";
 
 function App() {
   const appRouter = createBrowserRouter([
@@ -13,6 +13,10 @@ function App() {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/MovieDetails/:id", //setting up the route dynamically
+      element: <Description />,
     },
   ]);
 
