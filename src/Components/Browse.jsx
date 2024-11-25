@@ -8,6 +8,7 @@ import useUpcoming from "../Hooks/useUpcoming";
 import GPTSearchPage from "./GPTSearchPage";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useModalTrailer from "../Hooks/useModalTrailer";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);

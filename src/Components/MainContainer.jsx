@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import VideoTitle from "./VideoTitle";
 import Video from "./Video";
+import Modal from "./Modal";
 
 const MainContainer = () => {
   const Movies = useSelector((store) => store.movies?.nowPlayingMovies);
@@ -20,6 +21,7 @@ const MainContainer = () => {
     <div>
       <VideoTitle title={original_title} overview={overview} />
       <Video movieId={id} />
+      <Modal />
     </div>
   );
 };

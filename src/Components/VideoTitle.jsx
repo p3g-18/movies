@@ -1,6 +1,22 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { openModal } from "../utils/movieSlice";
+import Modal from "./Modal";
 
 const VideoTitle = ({ title, overview }) => {
+  const dispatch = useDispatch();
+  const trailerVideo = useSelector((store) => store.movies?.trailer);
+  console.log("Video ree", trailerVideo);
+  const trailer = trailerVideo?.key;
+
+  const handleMainVideo = () => {
+    // mainContainer Trailer
+    console.log("k");
+    dispatch(openModal(trailer));
+    console.log("i");
+  };
+
   return (
     <div className=" pt-[25%] px-20 w-screen aspect-video absolute text-white bg-gradient-to-r from-black">
       <div>
@@ -8,11 +24,11 @@ const VideoTitle = ({ title, overview }) => {
         <p className="max-w-md px-2 m-2 text-gray-500">{overview}</p>
       </div>
       <div className="p-2">
-        <button className="bg-red-700 text-white p-4 m-2 rounded-lg  hover:opacity-75 text-opacity-85">
+        <button
+          className="bg-red-700 text-white p-4 m-2 rounded-lg  hover:opacity-75 text-opacity-85"
+          onClick={handleMainVideo}
+        >
           Play Trailer
-        </button>
-        <button className="bg-red-700 text-white p-4 m-2 rounded-lg  hover:opacity-75 text-opacity-85">
-          More Info
         </button>
       </div>
     </div>
