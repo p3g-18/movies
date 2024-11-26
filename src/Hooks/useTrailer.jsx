@@ -1,11 +1,13 @@
 import { Api_Options } from "../utils/Constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addTrailer } from "../utils/movieSlice";
 
 //fetching data for the background video
 
 const getTrailer = (movieId) => {
+  const trailerVideos = useSelector((store) => store.movie?.trailer);
+
   const dispatch = useDispatch();
 
   const getVideos = async () => {
@@ -25,7 +27,7 @@ const getTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    getVideos();
+    !trailerVideos && getVideos(); // To reduce the number of API calls
   }, []);
 };
 

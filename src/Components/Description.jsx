@@ -62,7 +62,7 @@ const Description = () => {
         alt="Backdrop"
       />
 
-      <div className="relative flex items-center justify-start p-8">
+      <div className="relative   flex items-center justify-start p-8">
         <img
           src={IMG_CDN_URL + poster_path}
           className="relative w-[20%] h-[50%] flex-shrink-0 rounded-2xl mt-20 shadow-md"

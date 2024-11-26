@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Api_Options } from "../utils/Constants";
 import { setModalTrailer } from "../utils/movieSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const useModalTrailer = (id) => {
   const dispatch = useDispatch();
+
+  const modalMovies = useSelector((store) => store.movies?.modalTrailer);
 
   const modalMovieTrailers = async () => {
     try {
@@ -30,7 +32,7 @@ const useModalTrailer = (id) => {
   };
 
   useEffect(() => {
-    modalMovieTrailers();
+    !modalMovies && modalMovieTrailers();
   }, [id]);
 };
 

@@ -69,7 +69,7 @@ const Header = () => {
           onMouseLeave={handleMouseLeave}
         >
           <button
-            className="bg-red-700 text-white p-2 mr-36 rounded-2xl hover:bg-opacity-50"
+            className="bg-red-700 text-white p-2 mr-4 rounded-2xl hover:bg-opacity-50"
             onClick={handleGpt}
           >
             {showGptSearch ? "Home" : "GPTSearch"}

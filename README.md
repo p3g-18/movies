@@ -10,5 +10,9 @@
   - Header
   - Background video with trailer play button and movie details
   - List of Different movie genre
+  - Top Rated Lists
+  - Upcoming Lists
+  - Now Playing
 - GPT search
-  - smart search
+  - Smart search
+  - Movie Details
