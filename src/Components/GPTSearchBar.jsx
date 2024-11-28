@@ -34,7 +34,7 @@ const GPTSearchBar = () => {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt =
-      "Act as a movie recommendation system and suggest some movies for the prompt :" +
+      "Act as a movie recommendation system and suggest some movies for the prompt and also find the exact movie which is asked in prompt :" +
       searchText.current.value +
       "only give me names of 10 movies,comma separated";
 
@@ -60,19 +60,19 @@ const GPTSearchBar = () => {
   };
 
   return (
-    <div className=" pt-[10%] flex justify-center  ">
+    <div className="pt-[18%] md:pt-[10%] flex justify-center  ">
       <form
-        className="bg-gradient-to-r from-blue-800 to-slate-900 p-4 w-1/2 grid grid-cols-12"
+        className="bg-gradient-to-r from-blue-800 to-slate-900 p-4 w-screen md:w-1/2 grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
           placeholder={lang[langKey].gptSearchPlaceHolder}
-          className="p-2 col-span-9 m-2 outline-blue-500"
+          className="w-full p-2 col-span-9 m-2 outline-none pr-30"
         />
         <button
-          className="bg-teal-400  col-span-3 rounded-lg  m-2  text-white font-bold"
+          className="bg-teal-400  col-span-3 rounded-lg  m-2 -ml-4 text-white font-bold   "
           onClick={handleSearchButton}
         >
           {lang[langKey].search}

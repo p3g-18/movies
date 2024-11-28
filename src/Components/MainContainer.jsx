@@ -18,7 +18,7 @@ const MainContainer = () => {
   const { original_title, overview, id } = mainMovie || {}; // Fallback in case mainMovie is undefined
 
   return (
-    <div>
+    <div className="bg-black pt-[15%] md:pt-0">
       <VideoTitle title={original_title} overview={overview} />
       <Video movieId={id} />
       <Modal />

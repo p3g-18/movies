@@ -18,6 +18,7 @@ const Description = () => {
 
   const details = useSelector((store) => store.movies.details);
   const trailer = useSelector((store) => store.movies.modalTrailer);
+  console.log("trauelr", trailer);
   // Trailer key from Redux
 
   if (!details) {
@@ -61,21 +62,22 @@ const Description = () => {
         className="fixed w-[100%] h-[100%] object-cover filter blur-md"
         alt="Backdrop"
       />
+      <div className="ml-8 text-white mb-32">
+        {/* Home Button fixed at top-right corner */}
+        <div className="absolute top-4 right-4 z-10">
+          <button className="bg-red-700 p-3 rounded-2xl font-bold">
+            <Link to="/browse">Home</Link>
+          </button>
+        </div>
 
-      <div className="relative   flex items-center justify-start p-8">
-        <img
-          src={IMG_CDN_URL + poster_path}
-          className="relative w-[20%] h-[50%] flex-shrink-0 rounded-2xl mt-20 shadow-md"
-          alt="Poster"
-        />
+        <div className="relative flex flex-col lg:flex-row items-center lg:items-start p-8">
+          <img
+            src={IMG_CDN_URL + poster_path}
+            className="w-[90%] md:w-[25%]  rounded-2xl shadow-md mb-2 mt-20 lg:mb-0 lg:mt-20 lg:m-2 z-10"
+            alt="Poster"
+          />
 
-        <div className="ml-8 text-white mb-32">
-          <div className="flex justify-end m-2 inset-0 bottom-24">
-            <button className="bg-red-700 p-3 mb-34 rounded-2xl mr-10 fixed font-bold">
-              <Link to="/browse">Home</Link>
-            </button>
-          </div>
-          <div className="mt-20">
+          <div className="mt-auto md:mt-20 mx-auto md:mx-0 text-center md:text-left">
             <h1 className="text-4xl font-bold mb-4 p-2">{title}</h1>
             <span className="p-2">
               {convertMinutesToHoursAndMinutes(runtime)}
@@ -87,7 +89,7 @@ const Description = () => {
               {overview}
             </p>
             <button
-              className="p-4 m-4 mt-10 bg-blue-600 font-bold rounded-xl"
+              className="p-4 m-4 mt-10 bg-blue-600 font-bold rounded-xl mx-auto"
               onClick={handleClick}
             >
               Play Trailer

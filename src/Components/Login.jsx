@@ -11,7 +11,7 @@ import { auth } from "../utils/Firebase";
 
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
-import { bgImage } from "../utils/Constants";
+import { GPT_BG_Image } from "../utils/Constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -94,7 +94,7 @@ const Login = () => {
 
       <div className=" hidden md:block  absolute inset-0 -z-10 ">
         <img
-          src={bgImage}
+          src={GPT_BG_Image}
           alt="backgroundImage"
           className="  w-full h-full object-cover "
         />

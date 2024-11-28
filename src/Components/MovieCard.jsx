@@ -10,7 +10,7 @@ const MovieCard = ({ posterPath, id }) => {
 
   if (!posterPath) return null;
   return (
-    <div className="w-[15%] h-[25%] flex-shrink-0 m-4 ">
+    <div className="w-[30%] h-[20%] md:w-[15%] md:h-[25%] flex-shrink-0 m-4 ">
       <img
         src={IMG_CDN_URL + posterPath}
         alt="movieposter"

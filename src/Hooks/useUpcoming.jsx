@@ -5,7 +5,7 @@ import { addUpComing } from "../utils/movieSlice";
 
 const useUpcoming = () => {
   const dispatch = useDispatch();
-  const upcomingMovies = useSelector((store) => store.movies?.upcoming);
+  // const upcomingMovies = useSelector((store) => store.movies?.upcoming);
 
   const Upcoming = async () => {
     const data = await fetch(
@@ -17,7 +17,7 @@ const useUpcoming = () => {
     dispatch(addUpComing(json.results));
   };
   useEffect(() => {
-    if (!upcomingMovies) Upcoming();
+    Upcoming();
   }, []);
 };
 

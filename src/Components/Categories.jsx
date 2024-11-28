@@ -24,11 +24,13 @@ const Categories = ({ title, movies }) => {
 
   return (
     <div>
-      <h1 className="text-3xl px-12 py-4 text-white">{title}</h1>
+      <h1 className=" text-xl md:text-3xl px-2 md:px-12 py-4 text-white">
+        {title}
+      </h1>
       <div className="flex items-center w-max-screen">
         {movies.length >= 7 && (
           <div
-            className="flex items-center justify-center w-16 h-16 cursor-pointer opacity-50 hover:opacity-100 text-gray-600"
+            className="hidden md:flex items-center justify-center w-16 h-16 cursor-pointer opacity-50 hover:opacity-100 text-gray-600"
             onClick={slideLeft}
           >
             <MdChevronLeft size={48} />
@@ -53,7 +55,7 @@ const Categories = ({ title, movies }) => {
         </div>
         {movies.length >= 7 && (
           <div
-            className="flex items-center justify-center w-16 h-16 cursor-pointer opacity-50 hover:opacity-100 text-gray-600"
+            className="hidden md:flex items-center justify-center w-16 h-16 cursor-pointer opacity-50 hover:opacity-100 text-gray-600"
             onClick={slideRight}
           >
             <MdChevronRight size={48} />

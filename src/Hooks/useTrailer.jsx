@@ -6,7 +6,7 @@ import { addTrailer } from "../utils/movieSlice";
 //fetching data for the background video
 
 const getTrailer = (movieId) => {
-  const trailerVideos = useSelector((store) => store.movie?.trailer);
+  // const trailerVideos = useSelector((store) => store.movie?.trailer);
 
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ const getTrailer = (movieId) => {
   };
 
   useEffect(() => {
-    !trailerVideos && getVideos(); // To reduce the number of API calls
+    getVideos(); // To reduce the number of API calls
   }, []);
 };
 

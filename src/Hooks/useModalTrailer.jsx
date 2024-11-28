@@ -32,7 +32,7 @@ const useModalTrailer = (id) => {
   };
 
   useEffect(() => {
-    !modalMovies && modalMovieTrailers();
+    modalMovieTrailers();
   }, [id]);
 };
 

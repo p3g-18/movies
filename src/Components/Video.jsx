@@ -7,7 +7,7 @@ const Video = ({ movieId }) => {
   console.log("trailer Videos", trailerVideo);
   getTrailer(movieId);
   return (
-    <div className="w-screen ">
+    <div className=" md:w-screen ">
       <iframe
         className="w-screen aspect-video"
         src={

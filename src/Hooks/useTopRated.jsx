@@ -4,7 +4,7 @@ import { addTopRated } from "../utils/movieSlice";
 import { useEffect } from "react";
 
 const useTopRated = () => {
-  const topRatedMovies = useSelector((store) => store.movies?.topRated);
+  // const topRatedMovies = useSelector((store) => store.movies?.topRated);
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ const useTopRated = () => {
   };
 
   useEffect(() => {
-    !topRatedMovies && topRated();
+    topRated();
   }, []);
 };
 

@@ -14,8 +14,8 @@ const GPTSuggestions = () => {
   if (!gemMovies || !Array.isArray(gemResults)) return null;
 
   return (
-    <div className="p-2 m-4 bg-black text-white opacity-90">
-      <div className="opacity-90">
+    <div className="p-2 m-0 md:m-4 bg-black md:opacity-90 text-white">
+      <div className="opacity-90 ">
         {gemMovies.map((movieName, index) => (
           <Categories
             key={movieName}

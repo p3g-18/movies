@@ -16,6 +16,7 @@ const Header = () => {
   const location = useLocation();
   const user = useSelector((state) => state.user);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const dispatch = useDispatch();
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
@@ -27,7 +28,6 @@ const Header = () => {
       });
   };
 
-  //onAuthChange
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -59,42 +59,35 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-screen z-10 px-4 py-2 bg-gradient-to-b from-black flex justify-between ">
-      <img className="w-40 h-16 sm:w-52 sm:h-24" src={NetflixLogo} alt="Logo" />
+    <div className="absolute w-screen z-10 px-4 py-2 bg-gradient-to-b from-black flex justify-between items-center">
+      {/* Logo */}
+      <img className="w-20 h-16 sm:w-52 sm:h-24" src={NetflixLogo} alt="Logo" />
 
       {user && (
-        <div
-          className="flex p-2 items-center relative mx-10"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <button
-            className="bg-red-700 text-white p-2 mr-4 rounded-2xl hover:bg-opacity-50"
-            onClick={handleGpt}
-          >
-            {showGptSearch ? "Home" : "GPTSearch"}
-          </button>
-          <div
-            className="flex items-center"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <p className="text-white">Hello,</p>{" "}
-            <p className="px-2  text-red-800 font-bold cursor-pointer uppercase">
-              {user.displayName}
-            </p>
-            <span className="cursor-pointer transform transition-transform duration-300 hover:rotate-180">
-              🔻
-            </span>
-            {showDropdown && (
-              <div className="absolute top-[60%] right-0 bg-gray-800 p-4 mt-2 rounded-lg shadow-lg text-white z-10 w-48">
+        <>
+          {/* Hamburger Menu for Smaller Screens */}
+          <div className="md:hidden  ">
+            <button
+              className="text-white text-2xl "
+              onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
+            >
+              ☰
+            </button>
+            {showHamburgerMenu && (
+              <div className="absolute top-[100%] right-4 bg-gray-800 p-4 rounded-lg shadow-lg text-white z-10 w-60">
+                <p className="text-white mb-2">Hello, {user.displayName}</p>
+                <button
+                  className="w-full bg-red-700 p-2 rounded text-white hover:bg-red-600 mb-2"
+                  onClick={handleGpt}
+                >
+                  {showGptSearch ? "Home" : "GPTSearch"}
+                </button>
+
                 {showGptSearch && (
                   <select
-                    className="w-full bg-gray-700 p-2 rounded my-2"
+                    className="w-full bg-gray-700 p-2 rounded mb-2"
                     onChange={handleLanguageChange}
                   >
-                    {" "}
-                    //language selection
                     {Language.map((lang) => (
                       <option key={lang.identifier} value={lang.identifier}>
                         {lang.name}
@@ -105,14 +98,58 @@ const Header = () => {
                 <button
                   className="w-full bg-red-700 p-2 rounded text-white hover:bg-red-600"
                   onClick={handleSignOut}
-                  onMouseEnter={handleMouseEnter}
                 >
                   Signout
                 </button>
               </div>
             )}
           </div>
-        </div>
+
+          {/* Original Menu for Larger Screens */}
+          <div
+            className="hidden md:flex p-2 items-center relative mx-10"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button
+              className="bg-red-700 text-white p-2 mr-4 rounded-2xl hover:bg-opacity-50"
+              onClick={handleGpt}
+            >
+              {showGptSearch ? "Home" : "GPTSearch"}
+            </button>
+            <div className="flex items-center">
+              <p className="text-white">Hello,</p>
+              <p className="px-2 text-red-800 font-bold cursor-pointer uppercase">
+                {user.displayName}
+              </p>
+              <span className="cursor-pointer transform transition-transform duration-300 hover:rotate-180">
+                🔻
+              </span>
+              {showDropdown && (
+                <div className="absolute top-[60%] right-0 bg-gray-800 p-4 mt-2 rounded-lg shadow-lg text-white z-10 w-48">
+                  {showGptSearch && (
+                    <select
+                      className="w-full bg-gray-700 p-2 rounded my-2"
+                      onChange={handleLanguageChange}
+                    >
+                      {Language.map((lang) => (
+                        <option key={lang.identifier} value={lang.identifier}>
+                          {lang.name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                  <button
+                    className="w-full bg-red-700 p-2 rounded text-white hover:bg-red-600"
+                    onClick={handleSignOut}
+                  >
+                    Signout
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
