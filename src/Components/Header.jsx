@@ -62,7 +62,7 @@ const Header = () => {
     <div className="absolute w-screen z-10 px-4 py-2 bg-gradient-to-b from-black flex justify-between items-center">
       <img
         className="w-32 h-16 sm:w-60 sm:h-24 object-cover"
-        src="/src/assets/logo5.png"
+        src="/assets/logo5.png"
         alt="Logo"
       />
 
