@@ -72,7 +72,7 @@ const GPTSearchBar = () => {
           className="w-full p-2 col-span-9 m-2 outline-none pr-30"
         />
         <button
-          className="bg-teal-400  col-span-3 rounded-lg  m-2 -ml-4 text-white font-bold   "
+          className="bg-teal-400  col-span-3 rounded-lg  m-2 -ml-4 text-white font-bold relative z-20"
           onClick={handleSearchButton}
         >
           {lang[langKey].search}

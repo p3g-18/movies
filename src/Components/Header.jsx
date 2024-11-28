@@ -60,12 +60,14 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen z-10 px-4 py-2 bg-gradient-to-b from-black flex justify-between items-center">
-      {/* Logo */}
-      <img className="w-20 h-16 sm:w-52 sm:h-24" src={NetflixLogo} alt="Logo" />
+      <img
+        className="w-32 h-16 sm:w-60 sm:h-24 object-cover"
+        src="/src/assets/logo5.png"
+        alt="Logo"
+      />
 
       {user && (
         <>
-          {/* Hamburger Menu for Smaller Screens */}
           <div className="md:hidden  ">
             <button
               className="text-white text-2xl "
@@ -77,7 +79,7 @@ const Header = () => {
               <div className="absolute top-[100%] right-4 bg-gray-800 p-4 rounded-lg shadow-lg text-white z-10 w-60">
                 <p className="text-white mb-2">Hello, {user.displayName}</p>
                 <button
-                  className="w-full bg-red-700 p-2 rounded text-white hover:bg-red-600 mb-2"
+                  className="w-full bg-gradient-to-l from-sky-500 via-slate-500 to-red-700 p-2 rounded text-white hover:bg-red-600 mb-2"
                   onClick={handleGpt}
                 >
                   {showGptSearch ? "Home" : "GPTSearch"}
@@ -105,14 +107,13 @@ const Header = () => {
             )}
           </div>
 
-          {/* Original Menu for Larger Screens */}
           <div
             className="hidden md:flex p-2 items-center relative mx-10"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             <button
-              className="bg-red-700 text-white p-2 mr-4 rounded-2xl hover:bg-opacity-50"
+              className="bg-gradient-to-l from-sky-500 via-slate-500 to-red-700  text-white p-2 mr-4 rounded-2xl hover:bg-opacity-50"
               onClick={handleGpt}
             >
               {showGptSearch ? "Home" : "GPTSearch"}
@@ -140,7 +141,7 @@ const Header = () => {
                     </select>
                   )}
                   <button
-                    className="w-full bg-red-700 p-2 rounded text-white hover:bg-red-600"
+                    className="w-full bg-gradient-to-l from-sky-500 via-slate-500 to-red-700  p-2 rounded text-white hover:bg-red-600"
                     onClick={handleSignOut}
                   >
                     Signout

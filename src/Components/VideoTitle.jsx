@@ -27,7 +27,7 @@ const VideoTitle = ({ title, overview }) => {
       </div>
       <div className="p-2">
         <button
-          className="bg-red-700 text-white p-2 md:p-4 m-0 md:m-2 rounded-lg  hover:opacity-75 text-opacity-85 "
+          className="bg-gradient-to-l from-sky-500 via-slate-500 to-red-700 text-white p-2 md:p-4 m-0 md:m-2 rounded-lg  hover:opacity-75 text-opacity-85 "
           onClick={handleMainVideo}
         >
           Play Trailer
