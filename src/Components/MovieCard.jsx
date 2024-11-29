@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { IMG_CDN_URL } from "../utils/Constants";
 import { useNavigate } from "react-router-dom";
 const MovieCard = ({ posterPath, id }) => {
@@ -15,6 +15,7 @@ const MovieCard = ({ posterPath, id }) => {
         src={IMG_CDN_URL + posterPath}
         alt="movieposter"
         className="inline-block cursor-pointer hover:scale-105 ease-in-out duration-300 shadow-xl rounded-xl"
+        loading="lazy"
         onClick={handleClick}
       />
     </div>

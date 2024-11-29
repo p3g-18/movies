@@ -96,6 +96,7 @@ const Login = () => {
         <img
           src={GPT_BG_Image}
           alt="backgroundImage"
+          loading="lazy"
           className="  w-full h-full object-cover "
         />
       </div>

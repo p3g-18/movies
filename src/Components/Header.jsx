@@ -63,6 +63,7 @@ const Header = () => {
       <img
         className="w-32 h-16 sm:w-60 sm:h-24 object-cover"
         src="/assets/logo5.png"
+        loading="lazy"
         alt="Logo"
       />
 

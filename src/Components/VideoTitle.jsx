@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { openModal } from "../utils/movieSlice";
@@ -37,4 +37,4 @@ const VideoTitle = ({ title, overview }) => {
   );
 };
 
-export default VideoTitle;
+export default memo(VideoTitle);

@@ -60,6 +60,7 @@ const Description = () => {
       <img
         src={IMG_CDN_URL + backdrop_path}
         className="fixed w-[100%] h-[100%] object-cover filter blur-md"
+        loading="lazy"
         alt="Backdrop"
       />
       <div className="ml-8 text-white mb-32">
