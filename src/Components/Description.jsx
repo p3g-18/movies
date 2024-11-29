@@ -65,7 +65,7 @@ const Description = () => {
       <div className="ml-8 text-white mb-32">
         {/* Home Button fixed at top-right corner */}
         <div className="absolute top-4 right-4 z-10">
-          <button className="bg-red-700 p-3 rounded-2xl font-bold">
+          <button className="bg-gradient-to-l from-sky-500 via-slate-500 to-red-700 p-3 rounded-2xl font-bold">
             <Link to="/browse">Home</Link>
           </button>
         </div>

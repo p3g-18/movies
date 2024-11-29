@@ -68,15 +68,15 @@ const Header = () => {
 
       {user && (
         <>
-          <div className="md:hidden  ">
+          <div className="md:hidden     ">
             <button
-              className="text-white text-2xl "
+              className="text-white text-2xl 0"
               onClick={() => setShowHamburgerMenu(!showHamburgerMenu)}
             >
               ☰
             </button>
             {showHamburgerMenu && (
-              <div className="absolute top-[100%] right-4 bg-gray-800 p-4 rounded-lg shadow-lg text-white z-10 w-60">
+              <div className="absolute top-[100%] right-4 bg-gray-800 p-4 rounded-lg shadow-lg text-white w-60 z-50">
                 <p className="text-white mb-2">Hello, {user.displayName}</p>
                 <button
                   className="w-full bg-gradient-to-l from-sky-500 via-slate-500 to-red-700 p-2 rounded text-white hover:bg-red-600 mb-2"
@@ -87,7 +87,7 @@ const Header = () => {
 
                 {showGptSearch && (
                   <select
-                    className="w-full bg-gray-700 p-2 rounded mb-2"
+                    className="w-full bg-gray-700 p-2 rounded mb-2 "
                     onChange={handleLanguageChange}
                   >
                     {Language.map((lang) => (
@@ -108,7 +108,7 @@ const Header = () => {
           </div>
 
           <div
-            className="hidden md:flex p-2 items-center relative mx-10"
+            className="hidden md:flex p-2 items-center relative mx-10 "
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -127,7 +127,7 @@ const Header = () => {
                 🔻
               </span>
               {showDropdown && (
-                <div className="absolute top-[60%] right-0 bg-gray-800 p-4 mt-2 rounded-lg shadow-lg text-white z-10 w-48">
+                <div className="absolute top-[80%] -right-4 bg-gray-800 p-4 mt-2 rounded-lg shadow-lg text-white  z-10 w-48 ">
                   {showGptSearch && (
                     <select
                       className="w-full bg-gray-700 p-2 rounded my-2"

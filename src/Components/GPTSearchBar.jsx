@@ -33,10 +33,13 @@ const GPTSearchBar = () => {
     const genAI = new GoogleGenerativeAI(GPT_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    const prompt =
-      "Act as a movie recommendation system and suggest some movies for the prompt and also find the exact movie which is asked in prompt :" +
-      searchText.current.value +
-      "only give me names of 10 movies,comma separated";
+    const prompt = `
+Act as a movie recommendation system. 
+1. If the input is a genre (e.g., "horror", "action", "romantic"), recommend 10 popular movies from that genre. 
+2. If the input is the name of a specific movie, find that movie and recommend 9 similar movies based on its genre or theme.
+3. If the input is unclear or the movie is not found, recommend 10 popular movies from the general genre closest to the input. 
+Input: "${searchText.current.value}".
+Output: Provide a comma-separated list of 10 movie names only. No extra text.`;
 
     const result = await model.generateContent(prompt);
 
@@ -71,8 +74,9 @@ const GPTSearchBar = () => {
           placeholder={lang[langKey].gptSearchPlaceHolder}
           className="w-full p-2 col-span-9 m-2 outline-none pr-30"
         />
+
         <button
-          className="bg-teal-400  col-span-3 rounded-lg  m-2 -ml-4 text-white font-bold relative z-20"
+          className="bg-teal-400  hover:bg-teal-300 col-span-3 rounded-lg  m-2 -ml-4 text-white font-bold "
           onClick={handleSearchButton}
         >
           {lang[langKey].search}
