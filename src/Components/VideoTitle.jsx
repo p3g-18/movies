@@ -1,20 +1,19 @@
 import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { openModal } from "../utils/movieSlice";
-import Modal from "./Modal";
 
-const VideoTitle = ({ title, overview }) => {
+const VideoTitle = ({ title, overview, secondaryRef }) => {
   const dispatch = useDispatch();
   const trailerVideo = useSelector((store) => store.movies?.trailer);
   console.log("Video ree", trailerVideo);
   const trailer = trailerVideo?.key;
+  console.log("Main trailer", trailer);
 
-  const handleMainVideo = () => {
-    // mainContainer Trailer
-    console.log("k");
-    dispatch(openModal(trailer));
-    console.log("i");
+  const handleScroll = () => {
+    console.log("CLicked");
+    if (secondaryRef?.current) {
+      secondaryRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -27,10 +26,10 @@ const VideoTitle = ({ title, overview }) => {
       </div>
       <div className="p-2">
         <button
-          className="bg-gradient-to-l from-sky-500 via-slate-500 to-red-700 text-white p-2 md:p-4 m-0 md:m-2 rounded-lg  hover:opacity-75 text-opacity-85 "
-          onClick={handleMainVideo}
+          className="bg-gradient-to-l from-sky-500 via-slate-500 to-red-700 text-white p-2 md:p-4 m-0 md:m-2 rounded-lg  hover:opacity-75 text-opacity-85  "
+          onClick={handleScroll}
         >
-          Play Trailer
+          Watch More🔻
         </button>
       </div>
     </div>

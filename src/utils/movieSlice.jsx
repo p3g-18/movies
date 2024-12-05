@@ -34,7 +34,8 @@ const movieSlice = createSlice({
       state.isModalOpen = true; // Open modal
     },
     closeModal: (state) => {
-      state.isModalOpen = false; // Close modal
+      state.isModalOpen = false;
+      state.modalTrailer = null; // Close modal
     },
   },
 });
