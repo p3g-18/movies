@@ -16,3 +16,6 @@
 - GPT search
   - Smart search
   - Movie Details
+- Cards
+  - Clickable cards
+  - Movie Description along with Trailers
